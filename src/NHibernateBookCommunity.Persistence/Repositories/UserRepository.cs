@@ -3,5 +3,7 @@ using NHibernateBookCommunity.Domain.Persistence;
 
 namespace NHibernateBookCommunity.Persistence.Repositories
 {
-    public class UserRepository : Repository<User>, IUserRepository {}
+    public class UserRepository : Repository<User>, IUserRepository
+    {
+    }
 }

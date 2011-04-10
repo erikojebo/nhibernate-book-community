@@ -12,24 +12,24 @@ namespace NHibernateBookCommunity.Domain.Entities
         public virtual string Password { get; set; }
         public virtual DateTime LastLoginDate { get; set; }
 
-        public virtual IList<Review> Reviews
+        public virtual IEnumerable<Review> Reviews
         {
             get { return _reviews; }
         }
 
-        public virtual IList<StatusUpdate> StatusUpdates
+        public virtual IEnumerable<StatusUpdate> StatusUpdates
         {
             get { return _statusUpdates; }
         }
 
         public virtual void AddReview(Review review)
         {
-            Reviews.Add(review);
+            _reviews.Add(review);
         }
 
         public virtual void AddStatusUpdate(StatusUpdate statusUpdate)
         {
-            StatusUpdates.Add(statusUpdate);
+            _statusUpdates.Add(statusUpdate);
         }
     }
 }
