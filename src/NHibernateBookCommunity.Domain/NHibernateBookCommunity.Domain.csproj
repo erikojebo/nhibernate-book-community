@@ -51,8 +51,6 @@
   <ItemGroup>
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Review.cs" />
-    <Compile Include="Persistence\IRepository.cs" />
-    <Compile Include="Persistence\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\User.cs" />
   </ItemGroup>

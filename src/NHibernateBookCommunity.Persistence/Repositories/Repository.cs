@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using NHibernateBookCommunity.Domain.Persistence;
 using NHibernateBookCommunity.Persistence.Infrastructure;
 
 namespace NHibernateBookCommunity.Persistence.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> where T : class
     {
         public T Get(int id)
         {

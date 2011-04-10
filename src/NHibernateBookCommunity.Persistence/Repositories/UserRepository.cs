@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using NHibernate.Transform;
 using NHibernateBookCommunity.Domain.Entities;
-using NHibernateBookCommunity.Domain.Persistence;
 using NHibernateBookCommunity.Persistence.Infrastructure;
 
 namespace NHibernateBookCommunity.Persistence.Repositories
 {
-    public class UserRepository : Repository<User>, IUserRepository
+    public class UserRepository : Repository<User>
     {
         public IList<User> GetUsersWithReviewsWithRating(int rating)
         {
