@@ -10,7 +10,8 @@ namespace NHibernateBookCommunity.Console
     {
         private static void Main(string[] args)
         {
-            ClearDatabase();
+            DataDeleter.ClearDatabase();
+
             CreateTestData();
 
             PrintReviewCountsWithLazyLoading();
@@ -128,15 +129,6 @@ namespace NHibernateBookCommunity.Console
                 session.Save(user3);
 
                 transaction.Commit();
-            }
-        }
-
-        private static void ClearDatabase()
-        {
-            using (var session = SessionFactorySingleton.OpenSession())
-            {
-                session.CreateQuery("delete Review").ExecuteUpdate();
-                session.CreateQuery("delete User").ExecuteUpdate();
             }
         }
 

@@ -1,9 +1,8 @@
 using System;
-using NHibernate;
+using System.Linq;
 using NHibernateBookCommunity.Domain.Entities;
 using NHibernateBookCommunity.Persistence.Infrastructure;
 using NUnit.Framework;
-using System.Linq;
 
 namespace NHibernateBookCommunity.Persistence.Repositories
 {
@@ -19,7 +18,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
         [SetUp]
         public void SetUp()
         {
-            ClearDatabase();
+            DataDeleter.ClearDatabase();
 
             _user1 = new User
                 {
@@ -127,7 +126,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual(1, actualUsers.Count(x => x.Id == _user1.Id));
             Assert.AreEqual(1, actualUsers.Count(x => x.Id == _user3.Id));
         }
-        
+
         [Test]
         public void GetUsersWithReviewsWithRating_QueryOver_returns_all_users_with_atleast_one_review_with_the_given_rating()
         {
@@ -149,15 +148,6 @@ namespace NHibernateBookCommunity.Persistence.Repositories
                 session.Save(_user4);
 
                 transaction.Commit();
-            }
-        }
-
-        private static void ClearDatabase()
-        {
-            using (var session = SessionFactorySingleton.OpenSession())
-            {
-                session.CreateQuery("delete Review").ExecuteUpdate();
-                session.CreateQuery("delete User").ExecuteUpdate();
             }
         }
     }
