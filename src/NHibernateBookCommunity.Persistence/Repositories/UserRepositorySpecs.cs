@@ -1,4 +1,5 @@
 using System;
+using NHibernate;
 using NHibernateBookCommunity.Domain.Entities;
 using NHibernateBookCommunity.Persistence.Infrastructure;
 using NUnit.Framework;
@@ -155,7 +156,6 @@ namespace NHibernateBookCommunity.Persistence.Repositories
         {
             using (var session = SessionFactorySingleton.OpenSession())
             {
-                session.CreateQuery("delete StatusUpdate").ExecuteUpdate();
                 session.CreateQuery("delete Review").ExecuteUpdate();
                 session.CreateQuery("delete User").ExecuteUpdate();
             }

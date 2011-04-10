@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NHibernate.Transform;
 using NHibernateBookCommunity.Domain.Entities;

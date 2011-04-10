@@ -25,7 +25,9 @@ namespace NHibernateBookCommunity.Persistence.Infrastructure
                                 x => x.Server(@".\SQLEXPRESS")
                                     .Database("nhibernate_book_community")
                                          .TrustedConnection())
-                                .ShowSql())
+                                .ShowSql()
+                                //.FormatSql()
+                                )
                         .Mappings(m => m.AutoMappings.Add(
                             AutoMap.Assemblies(
                                 new AutoMappingConfiguration(),
@@ -34,12 +36,12 @@ namespace NHibernateBookCommunity.Persistence.Infrastructure
                                            .Conventions.AddFromAssemblyOf<ForeignKeyColumnNameConvention>()
                                            )
                                            .ExportTo(@"c:\temp\mappings"))
-                        //.ExposeConfiguration(cfg =>
-                        //    {
-                        //        var export = new SchemaExport(cfg);
-                        //        export.Drop(true, true);
-                        //        export.Create(true, true);
-                        //    })
+                        .ExposeConfiguration(cfg =>
+                            {
+                                var export = new SchemaExport(cfg);
+                                export.Drop(true, true);
+                                export.Create(true, true);
+                            })
                         .BuildSessionFactory();
                 }
 

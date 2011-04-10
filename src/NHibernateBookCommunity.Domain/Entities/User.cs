@@ -5,8 +5,7 @@ namespace NHibernateBookCommunity.Domain.Entities
 {
     public class User : Entity
     {
-        private IList<Review> _reviews = new List<Review>();
-        private IList<StatusUpdate> _statusUpdates = new List<StatusUpdate>();
+        private readonly IList<Review> _reviews = new List<Review>();
 
         public virtual string Username { get; set; }
         public virtual string Password { get; set; }
@@ -17,19 +16,9 @@ namespace NHibernateBookCommunity.Domain.Entities
             get { return _reviews; }
         }
 
-        public virtual IEnumerable<StatusUpdate> StatusUpdates
-        {
-            get { return _statusUpdates; }
-        }
-
         public virtual void AddReview(Review review)
         {
             _reviews.Add(review);
-        }
-
-        public virtual void AddStatusUpdate(StatusUpdate statusUpdate)
-        {
-            _statusUpdates.Add(statusUpdate);
         }
 
         public override string ToString()

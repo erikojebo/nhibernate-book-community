@@ -135,7 +135,6 @@ namespace NHibernateBookCommunity.Console
         {
             using (var session = SessionFactorySingleton.OpenSession())
             {
-                session.CreateQuery("delete StatusUpdate").ExecuteUpdate();
                 session.CreateQuery("delete Review").ExecuteUpdate();
                 session.CreateQuery("delete User").ExecuteUpdate();
             }
