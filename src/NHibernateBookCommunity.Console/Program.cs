@@ -120,15 +120,7 @@ namespace NHibernateBookCommunity.Console
                         Title = "User 3's first review",
                         Body = "This is the first review written by User 3",
                         DateTime = new DateTime(3011, 3, 4, 5, 6, 7),
-                        Rating = 5
-                    });
-
-                user3.AddReview(new Review
-                    {
-                        Title = "User 3's second review",
-                        Body = "This is the second review written by User 3",
-                        DateTime = new DateTime(3033, 3, 4, 6, 7, 8),
-                        Rating = 4
+                        Rating = 1
                     });
 
                 session.Save(user1);

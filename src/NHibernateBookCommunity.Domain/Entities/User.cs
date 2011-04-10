@@ -31,5 +31,10 @@ namespace NHibernateBookCommunity.Domain.Entities
         {
             _statusUpdates.Add(statusUpdate);
         }
+
+        public override string ToString()
+        {
+            return "Username: " + Username;
+        }
     }
 }

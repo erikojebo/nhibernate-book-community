@@ -34,12 +34,12 @@ namespace NHibernateBookCommunity.Persistence.Infrastructure
                                            .Conventions.AddFromAssemblyOf<ForeignKeyColumnNameConvention>()
                                            )
                                            .ExportTo(@"c:\temp\mappings"))
-                        .ExposeConfiguration(cfg =>
-                            {
-                                var export = new SchemaExport(cfg);
-                                export.Drop(true, true);
-                                export.Create(true, true);
-                            })
+                        //.ExposeConfiguration(cfg =>
+                        //    {
+                        //        var export = new SchemaExport(cfg);
+                        //        export.Drop(true, true);
+                        //        export.Create(true, true);
+                        //    })
                         .BuildSessionFactory();
                 }
 
