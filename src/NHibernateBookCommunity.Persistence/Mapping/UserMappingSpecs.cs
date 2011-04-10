@@ -52,7 +52,6 @@ namespace NHibernateBookCommunity.Persistence.Mapping
                 new PersistenceSpecification<User>(session)
                     .CheckProperty(x => x.Username, "username")
                     .CheckProperty(x => x.Password, "password")
-                    .CheckProperty(x => x.JoinDate, new DateTime(2011, 1, 2, 3, 4, 5))
                     .CheckProperty(x => x.LastLoginDate, new DateTime(2011, 1, 2, 3, 4, 5))
                     .CheckList(x => x.StatusUpdates, _statusUpdates, new EntityIdComparer(),
                         (u, s) => u.AddStatusUpdate(s))

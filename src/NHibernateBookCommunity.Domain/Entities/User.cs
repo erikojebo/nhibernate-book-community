@@ -5,19 +5,22 @@ namespace NHibernateBookCommunity.Domain.Entities
 {
     public class User : Entity
     {
-        public User()
-        {
-            Reviews = new List<Review>();
-            StatusUpdates = new List<StatusUpdate>();
-        }
+        private IList<Review> _reviews = new List<Review>();
+        private IList<StatusUpdate> _statusUpdates = new List<StatusUpdate>();
 
         public virtual string Username { get; set; }
         public virtual string Password { get; set; }
-        public DateTime JoinDate { get; set; }
-        public DateTime LastLoginDate { get; set; }
+        public virtual DateTime LastLoginDate { get; set; }
 
-        public virtual IList<Review> Reviews { get; private set; }
-        public virtual IList<StatusUpdate> StatusUpdates { get; private set; }
+        public virtual IList<Review> Reviews
+        {
+            get { return _reviews; }
+        }
+
+        public virtual IList<StatusUpdate> StatusUpdates
+        {
+            get { return _statusUpdates; }
+        }
 
         public virtual void AddReview(Review review)
         {
