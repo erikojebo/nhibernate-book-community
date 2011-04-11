@@ -1,11 +1,8 @@
-using FluentNHibernate.Automapping;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
+using System.Reflection;
 using NHibernate;
+using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NHibernateBookCommunity.Domain.Entities;
-using NHibernateBookCommunity.Persistence.Mapping.Conventions;
-using NHibernateBookCommunity.Persistence.Mapping.Overrides;
 
 namespace NHibernateBookCommunity.Persistence.Infrastructure
 {
@@ -19,30 +16,21 @@ namespace NHibernateBookCommunity.Persistence.Infrastructure
             {
                 if (_factory == null)
                 {
-                    _factory = Fluently.Configure()
-                        .Database(
-                            MsSqlConfiguration.MsSql2005.ConnectionString(
-                                x => x.Server(@".\SQLEXPRESS")
-                                    .Database("nhibernate_book_community")
-                                         .TrustedConnection())
-                                .ShowSql()
-                                //.FormatSql()
-                                )
-                        .Mappings(m => m.AutoMappings.Add(
-                            AutoMap.Assemblies(
-                                new AutoMappingConfiguration(),
-                                typeof(User).Assembly)
-                                           .UseOverridesFromAssemblyOf<ReviewMappingOverride>()
-                                           .Conventions.AddFromAssemblyOf<ForeignKeyColumnNameConvention>()
-                                           )
-                                           .ExportTo(@"c:\temp\mappings"))
-                        .ExposeConfiguration(cfg =>
-                            {
-                                var export = new SchemaExport(cfg);
-                                export.Drop(true, true);
-                                export.Create(true, true);
-                            })
-                        .BuildSessionFactory();
+                    var cfg = new Configuration();
+
+                    //cfg.AddClass(typeof(User));
+                    //cfg.AddClass(typeof(Review));
+
+                    cfg.Configure();
+                 
+                    cfg.AddAssembly(Assembly.GetExecutingAssembly());
+                    cfg.AddAssembly(typeof(User).Assembly);
+
+                    var export = new SchemaExport(cfg);
+                    export.Drop(true, true);
+                    export.Create(true, true);
+
+                    _factory = cfg.BuildSessionFactory();
                 }
 
                 return _factory;
