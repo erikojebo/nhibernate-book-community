@@ -4,7 +4,7 @@ namespace NHibernateBookCommunity.Domain.Entities
 {
     public class Review : Entity
     {
-        public virtual string Title { get; set; }
+        public string Title { get; set; }
         public virtual string Body { get; set; }
         public virtual int Rating { get; set; }
         public virtual DateTime DateTime { get; set; }
