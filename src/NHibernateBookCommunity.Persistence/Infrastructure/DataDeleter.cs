@@ -1,13 +1,23 @@
+using System.Data;
+using System.Data.SqlClient;
+using NHibernateBookCommunity.Persistence.Repositories;
+
 namespace NHibernateBookCommunity.Persistence.Infrastructure
 {
     public class DataDeleter
     {
         public static void ClearDatabase()
         {
-            using (var session = SessionFactorySingleton.OpenSession())
+            using (IDbConnection connection = new SqlConnection(AdoUserRepository.ConnectionString))
+            using (IDbCommand command = connection.CreateCommand())
             {
-                session.CreateQuery("delete Review").ExecuteUpdate();
-                session.CreateQuery("delete User").ExecuteUpdate();
+                connection.Open();
+
+                command.CommandText = "delete from Review";
+                command.ExecuteNonQuery();
+
+                command.CommandText = "delete from [User]";
+                command.ExecuteNonQuery();
             }
         }
     }

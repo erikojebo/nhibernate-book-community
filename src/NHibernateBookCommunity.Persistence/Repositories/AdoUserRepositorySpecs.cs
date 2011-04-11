@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using NHibernateBookCommunity.Domain.Entities;
+using NHibernateBookCommunity.Persistence.Infrastructure;
 using NUnit.Framework;
 
 namespace NHibernateBookCommunity.Persistence.Repositories
@@ -102,17 +103,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
 
         private void ClearDatabase()
         {
-            using (IDbConnection connection = new SqlConnection(AdoUserRepository.ConnectionString))
-            using (IDbCommand command = connection.CreateCommand())
-            {
-                connection.Open();
-
-                command.CommandText = "delete from Review";
-                command.ExecuteNonQuery();
-
-                command.CommandText = "delete from [User]";
-                command.ExecuteNonQuery();
-            }
+            DataDeleter.ClearDatabase();
         }
 
         private void RecreateDatabase()
