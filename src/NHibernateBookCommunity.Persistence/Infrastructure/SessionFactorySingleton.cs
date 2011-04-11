@@ -1,8 +1,9 @@
-using System.Reflection;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using NHibernateBookCommunity.Domain.Entities;
+using NHibernateBookCommunity.Persistence.Mapping;
+using NHibernateBookCommunity.Persistence.Mapping.Conventions;
 
 namespace NHibernateBookCommunity.Persistence.Infrastructure
 {
@@ -16,21 +17,26 @@ namespace NHibernateBookCommunity.Persistence.Infrastructure
             {
                 if (_factory == null)
                 {
-                    var cfg = new Configuration();
-
-                    //cfg.AddClass(typeof(User));
-                    //cfg.AddClass(typeof(Review));
-
-                    cfg.Configure();
-                 
-                    cfg.AddAssembly(Assembly.GetExecutingAssembly());
-                    cfg.AddAssembly(typeof(User).Assembly);
-
-                    var export = new SchemaExport(cfg);
-                    export.Drop(true, true);
-                    export.Create(true, true);
-
-                    _factory = cfg.BuildSessionFactory();
+                    _factory = Fluently.Configure()
+                        .Database(
+                            MsSqlConfiguration.MsSql2005.ConnectionString(
+                                x => x.Server(@".\SQLEXPRESS")
+                                         .Database("nhibernate_book_community")
+                                         .TrustedConnection())
+                                .ShowSql()
+                        )
+                        .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserMap>()
+                                           .Conventions.AddFromAssemblyOf<ForeignKeyColumnNameConvention>()
+                                           .ExportTo(@"c:\temp\mappings")
+                        )
+                        .ExposeConfiguration(
+                            cfg =>
+                                {
+                                    var export = new SchemaExport(cfg);
+                                    export.Drop(true, true);
+                                    export.Create(true, true);
+                                })
+                        .BuildSessionFactory();
                 }
 
                 return _factory;

@@ -5,7 +5,7 @@ using NHibernateBookCommunity.Domain.Entities;
 using NHibernateBookCommunity.Persistence.Infrastructure;
 using NUnit.Framework;
 
-namespace NHibernateBookCommunity.Persistence.Mapping
+namespace NHibernateBookCommunity.Persistence.Mapping.Specs
 {
     [TestFixture]
     public class UserMappingSpecs

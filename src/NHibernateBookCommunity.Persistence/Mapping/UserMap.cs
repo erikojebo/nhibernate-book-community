@@ -13,8 +13,7 @@ namespace NHibernateBookCommunity.Persistence.Mapping
             Map(x => x.Password);
             Map(x => x.LastLoginDate);
 
-            HasMany(x => x.Reviews)
-                .Access.CamelCaseField(Prefix.Underscore);
+            HasMany(x => x.Reviews);
         }
     }
 }

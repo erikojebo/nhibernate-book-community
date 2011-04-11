@@ -66,10 +66,12 @@
   <ItemGroup>
     <Compile Include="Infrastructure\DataDeleter.cs" />
     <Compile Include="Infrastructure\SessionFactorySingleton.cs" />
-    <Compile Include="Mapping\EntityIdComparer.cs" />
+    <Compile Include="Mapping\Conventions\ForeignKeyColumnNameConvention.cs" />
+    <Compile Include="Mapping\Conventions\HasManyConvention.cs" />
+    <Compile Include="Mapping\Specs\EntityIdComparer.cs" />
     <Compile Include="Mapping\ReviewMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
-    <Compile Include="Mapping\UserMappingSpecs.cs" />
+    <Compile Include="Mapping\Specs\UserMappingSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -84,9 +86,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Conventions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
