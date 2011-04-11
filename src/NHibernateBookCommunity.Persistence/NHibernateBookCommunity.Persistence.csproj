@@ -64,17 +64,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\AutoMappingConfiguration.cs" />
     <Compile Include="Infrastructure\DataDeleter.cs" />
     <Compile Include="Infrastructure\SessionFactorySingleton.cs" />
-    <Compile Include="Mapping\Conventions\ForeignKeyColumnNameConvention.cs" />
-    <Compile Include="Mapping\Conventions\HasManyConvention.cs" />
     <Compile Include="Mapping\EntityIdComparer.cs" />
-    <Compile Include="Mapping\Overrides\ReviewMappingOverride.cs" />
     <Compile Include="Mapping\UserMappingSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AdoUserRepository.cs" />
-    <Compile Include="Repositories\AdoUserRepositorySpecs.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\UserRepositorySpecs.cs" />
