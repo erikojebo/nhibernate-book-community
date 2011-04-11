@@ -93,6 +93,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             _repository = new UserRepository();
         }
 
+        [Ignore]
         [Test]
         public void Get_returns_the_user_with_the_given_id()
         {
@@ -102,6 +103,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual("User 1", actual.Username);
         }
 
+        [Ignore]
         [Test]
         public void Get_returns_null_for_non_existing_id()
         {
@@ -109,6 +111,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.IsNull(actual);
         }
 
+        [Ignore]
         [Test]
         public void GetAll_returns_all_saved_users()
         {
@@ -122,12 +125,13 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual("User 4", actual.ElementAt(3).Username);
         }
 
+        [Ignore]
         [Test]
         public void Save_writes_the_user_to_the_database()
         {
             var user = new User
                 {
-                    Username = "new user", 
+                    Username = "new user",
                     LastLoginDate = new DateTime(2011, 5, 5, 5, 5, 5)
                 };
 
@@ -138,6 +142,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual("new user", actual.Username);
         }
 
+        [Ignore]
         [Test]
         public void Save_updates_an_existing_user()
         {
@@ -150,13 +155,14 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual("new username", actual.Username);
         }
 
+        [Ignore]
         [Test]
         public void Save_updates_all_given_users()
         {
             _user1.Username = "new username";
             _user2.Username = "new username 2";
 
-            var entities = new [] { _user1, _user2 };
+            var entities = new[] { _user1, _user2 };
 
             _repository.Save(entities);
 
@@ -167,16 +173,18 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual("new username 2", actual2.Username);
         }
 
+        [Ignore]
         [Test]
         public void Delete_by_user_removes_user_from_the_database()
         {
             _repository.Delete(_user1);
 
             var actual = _repository.Get(_user1.Id);
-            
+
             Assert.IsNull(actual);
         }
-        
+
+        [Ignore]
         [Test]
         public void Delete_by_user_id_removes_user_from_the_database()
         {
@@ -187,6 +195,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.IsNull(actual);
         }
 
+        [Ignore]
         [Test]
         public void GetTotalReviewCount_returns_total_number_of_reviews_for_all_users()
         {
@@ -195,6 +204,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual(5, actualReviewCount);
         }
 
+        [Ignore]
         [Test]
         public void GetReviewCountForUser_returns_zero_for_user_without_reviews()
         {
@@ -203,6 +213,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual(0, actualReviewCount);
         }
 
+        [Ignore]
         [Test]
         public void GetReviewCountForUser_returns_number_of_reviews_for_user_with_given_id()
         {
@@ -211,6 +222,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual(2, actualReviewCount);
         }
 
+        [Ignore]
         [Test]
         public void GetUsersWithReviewsWithRating_returns_all_users_with_atleast_one_review_with_the_given_rating()
         {
@@ -221,6 +233,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual(1, actualUsers.Count(x => x.Id == _user3.Id));
         }
 
+        [Ignore]
         [Test]
         public void GetUsersWithReviewsWithRating_QueryOver_returns_all_users_with_atleast_one_review_with_the_given_rating()
         {
