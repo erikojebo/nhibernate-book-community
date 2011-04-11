@@ -67,10 +67,7 @@
     <Compile Include="Infrastructure\AutoMappingConfiguration.cs" />
     <Compile Include="Infrastructure\DataDeleter.cs" />
     <Compile Include="Infrastructure\SessionFactorySingleton.cs" />
-    <Compile Include="Mapping\Conventions\ForeignKeyColumnNameConvention.cs" />
-    <Compile Include="Mapping\Conventions\HasManyConvention.cs" />
     <Compile Include="Mapping\Specs\EntityIdComparer.cs" />
-    <Compile Include="Mapping\Overrides\ReviewMappingOverride.cs" />
     <Compile Include="Mapping\Specs\UserMappingSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -84,6 +81,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mapping\Conventions\" />
+    <Folder Include="Mapping\Overrides\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
