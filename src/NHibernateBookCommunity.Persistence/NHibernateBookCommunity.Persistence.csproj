@@ -73,8 +73,6 @@
     <Compile Include="Mapping\Overrides\ReviewMappingOverride.cs" />
     <Compile Include="Mapping\Specs\UserMappingSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AdoUserRepository.cs" />
-    <Compile Include="Repositories\AdoUserRepositorySpecs.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\UserRepositorySpecs.cs" />
