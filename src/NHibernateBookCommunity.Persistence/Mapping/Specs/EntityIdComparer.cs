@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using NHibernateBookCommunity.Domain.Entities;
 
-namespace NHibernateBookCommunity.Persistence.Mapping
+namespace NHibernateBookCommunity.Persistence.Mapping.Specs
 {
     public class EntityIdComparer : IEqualityComparer
     {
