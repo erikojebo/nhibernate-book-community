@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NHibernateBookCommunity.Domain.Entities;
 using NHibernateBookCommunity.Persistence.Infrastructure;
 
 namespace NHibernateBookCommunity.Persistence.Repositories
@@ -27,6 +28,18 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             using (var transaction = session.BeginTransaction())
             {
                 session.Delete(entity);
+
+                transaction.Commit();
+            }
+        }
+        
+        public void Delete(int id)
+        {
+            using (var session = SessionFactorySingleton.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var proxy = session.Load<User>(id);
+                session.Delete(proxy);
 
                 transaction.Commit();
             }

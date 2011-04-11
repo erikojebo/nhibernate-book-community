@@ -19,7 +19,7 @@ namespace NHibernateBookCommunity.Persistence.Repositories
                     .List<User>();
             }
         }
-        
+
         public IList<User> GetUsersWithReviewsWithRating_QueryOver(int rating)
         {
             using (var session = SessionFactorySingleton.OpenSession())
