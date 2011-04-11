@@ -27,7 +27,7 @@ namespace NHibernateBookCommunity.Persistence.Infrastructure
                         )
                         .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserMap>()
                                            .Conventions.AddFromAssemblyOf<ForeignKeyColumnNameConvention>()
-                                           .ExportTo(@"c:\temp\mappings")
+                                           //.ExportTo(@"c:\temp\mappings")
                         )
                         .ExposeConfiguration(
                             cfg =>
