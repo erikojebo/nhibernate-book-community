@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NHibernate.Criterion;
 using NHibernate.Transform;
 using NHibernateBookCommunity.Domain.Entities;
 using NHibernateBookCommunity.Persistence.Infrastructure;
@@ -50,6 +51,17 @@ namespace NHibernateBookCommunity.Persistence.Repositories
                     "where user.Id = :userId")
                     .SetInt32("userId", userId)
                     .UniqueResult<long>();
+            }
+        }
+
+        public User GetByLogin(string username, string password)
+        {
+            using (var session = SessionFactorySingleton.OpenSession())
+            {
+                return session.QueryOver<User>()
+                    .Where(x => x.Username == username && x.Password == password)
+                    .FutureValue<User>().Value;
+
             }
         }
     }
