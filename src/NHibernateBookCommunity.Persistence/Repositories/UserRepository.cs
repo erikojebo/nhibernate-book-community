@@ -57,12 +57,6 @@ namespace NHibernateBookCommunity.Persistence.Repositories
         public long GetTotalReviewCount()
         {
             throw new NotImplementedException();
-
-        }
-
-        public long GetReviewCountForUser(int userId)
-        {
-            throw new NotImplementedException();
         }
 
         public User GetByLogin(string username, string password)

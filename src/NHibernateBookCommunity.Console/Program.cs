@@ -15,7 +15,7 @@ namespace NHibernateBookCommunity.Console
             CreateTestData();
 
             PrintReviewCountsWithLazyLoading();
-            PrintReviewCountsWithEagerLoading();
+            //PrintReviewCountsWithEagerLoading();
         }
 
         private static void PrintReviewCountsWithLazyLoading()

@@ -224,24 +224,6 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             Assert.AreEqual(5, actualReviewCount);
         }
 
-        [Ignore]
-        [Test]
-        public void GetReviewCountForUser_returns_zero_for_user_without_reviews()
-        {
-            var actualReviewCount = _repository.GetReviewCountForUser(_user4.Id);
-
-            Assert.AreEqual(0, actualReviewCount);
-        }
-
-        [Ignore]
-        [Test]
-        public void GetReviewCountForUser_returns_number_of_reviews_for_user_with_given_id()
-        {
-            var actualReviewCount = _repository.GetReviewCountForUser(_user1.Id);
-
-            Assert.AreEqual(2, actualReviewCount);
-        }
-
         private void SaveAllUsers()
         {
             using (var session = SessionFactorySingleton.OpenSession())
