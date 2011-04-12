@@ -64,5 +64,10 @@ namespace NHibernateBookCommunity.Persistence.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public User GetByLogin(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -197,6 +197,26 @@ namespace NHibernateBookCommunity.Persistence.Repositories
 
         [Ignore]
         [Test]
+        public void GetByLogin_returns_null_if_no_match_was_found()
+        {
+            var actual = _repository.GetByLogin("unknown", "unknown");
+
+            Assert.IsNull(actual);
+        }
+        
+        [Ignore]
+        [Test]
+        public void GetByLogin_returns_matching_user_if_match_was_found()
+        {
+            var actual = _repository.GetByLogin("User 1", "Password 1");
+
+            Assert.AreEqual(_user1.Id, actual.Id);
+            Assert.AreEqual("User 1", actual.Username);
+            Assert.AreEqual("Password 1", actual.Password);
+        }
+
+        [Ignore]
+        [Test]
         public void GetTotalReviewCount_returns_total_number_of_reviews_for_all_users()
         {
             var actualReviewCount = _repository.GetTotalReviewCount();
@@ -220,28 +240,6 @@ namespace NHibernateBookCommunity.Persistence.Repositories
             var actualReviewCount = _repository.GetReviewCountForUser(_user1.Id);
 
             Assert.AreEqual(2, actualReviewCount);
-        }
-
-        [Ignore]
-        [Test]
-        public void GetUsersWithReviewsWithRating_returns_all_users_with_atleast_one_review_with_the_given_rating()
-        {
-            var actualUsers = _repository.GetUsersWithReviewsWithRating(5);
-
-            Assert.AreEqual(2, actualUsers.Count);
-            Assert.AreEqual(1, actualUsers.Count(x => x.Id == _user1.Id));
-            Assert.AreEqual(1, actualUsers.Count(x => x.Id == _user3.Id));
-        }
-
-        [Ignore]
-        [Test]
-        public void GetUsersWithReviewsWithRating_QueryOver_returns_all_users_with_atleast_one_review_with_the_given_rating()
-        {
-            var actualUsers = _repository.GetUsersWithReviewsWithRating(5);
-
-            Assert.AreEqual(2, actualUsers.Count);
-            Assert.AreEqual(1, actualUsers.Count(x => x.Id == _user1.Id));
-            Assert.AreEqual(1, actualUsers.Count(x => x.Id == _user3.Id));
         }
 
         private void SaveAllUsers()
