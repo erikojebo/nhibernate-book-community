@@ -67,7 +67,6 @@
     <Compile Include="Infrastructure\AutoMappingConfiguration.cs" />
     <Compile Include="Infrastructure\DataDeleter.cs" />
     <Compile Include="Infrastructure\SessionFactorySingleton.cs" />
-    <Compile Include="Mapping\Specs\EntityIdComparer.cs" />
     <Compile Include="Mapping\Specs\UserMappingSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

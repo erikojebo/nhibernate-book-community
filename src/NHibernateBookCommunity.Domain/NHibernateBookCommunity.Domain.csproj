@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparers\EntityIdComparer.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Review.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

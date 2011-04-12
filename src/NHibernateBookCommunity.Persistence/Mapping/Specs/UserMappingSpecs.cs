@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FluentNHibernate.Testing;
+using NHibernateBookCommunity.Domain.Comparers;
 using NHibernateBookCommunity.Domain.Entities;
 using NHibernateBookCommunity.Persistence.Infrastructure;
 using NUnit.Framework;
